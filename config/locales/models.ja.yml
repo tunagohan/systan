@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        login: メールアドレス or ユーザー名
+        password_confirmation: 確認用パスワード
+        remember_me: 次回から自動的にログイン
+        username: ユーザー名
+      word:
+          title: 単語名
+          yomi: 読み
+          body: 意味

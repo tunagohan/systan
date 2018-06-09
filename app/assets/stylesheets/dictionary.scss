@@ -1,0 +1,299 @@
+@charset "utf-8";
+/* 共通カラー */
+$char:#555459;
+$navy :#036;
+$hi-navy :lighten($navy,15%);
+
+/* パーツ */
+@mixin btn{
+	border: solid 2px $navy;
+	border-radius: 4px;
+	padding: 10px 25px;
+	text-decoration: none;
+	text-align: center;
+	background-color: $navy;
+	color: #fff;
+	font-size: .7em;
+	&:hover{
+		background-color: $hi-navy;
+		border: solid 2px $hi-navy;
+		color: #fff;
+		transition: background-color .2s ease 0s, color .2s ease 0s;
+	}
+}
+@mixin textarea {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	margin-top: 5px;
+	border-radius: 4px;
+	border: solid 1px #e0e0e0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+}
+
+
+/* 検索box */
+.dic-search{
+	position: relative;
+	margin-left: auto;
+	padding: 0 10px 60px;
+	input{
+		margin: 0 40px;
+		padding: 10px;
+		font-size: 20px;
+		height: 45px;
+		width: 400px;
+		float: right;
+		border: solid 1px #ccc;
+		border-radius: 4px;
+	}
+}
+/* 入力フォーム */
+.dic-new{
+	margin: auto;
+}
+.dic-new>div{
+	margin-top: 20px;
+}
+
+.dic-new>div:first-child{
+	margin-top: 0;
+}
+.dic-new .title input, .dic-new .yomi input{
+	@include textarea;
+}
+.dic-new .mean textarea{
+	@include textarea;
+	height: 300px;
+}
+.dic-new .actions input{
+	@include btn;
+}
+
+/* 単語一覧 */
+.dic-tables{
+	margin: 2em 3em;
+	th{
+		padding: 10px 30px;
+	}
+	li{
+		list-style: square;
+		margin-bottom: 20px;
+		border-bottom: 1px solid #ccc;
+		&:hover{
+			background-color: #eee;
+		}
+		span{
+			display:block;
+			margin: 10px 0 5px;
+			font-size: 14px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+		a{
+			display:block;
+			position: relative;
+			font-size: 1.5em;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			width: inherit;
+			padding: 0 55px 5px;
+		}
+	}
+	hr{
+		border-top: 1px solid #bbb;
+		border-bottom: 1px solid #fff;
+	}
+}
+.dic-list .entry{
+	display: none;
+}
+
+/* 登録・編集 */
+.dic-newWord, .dic-edit{
+	margin-top: 30px;
+}
+.dic-newWord form, .dic-edit form{
+	padding: 1em 3em;
+	margin: auto;
+}
+
+/* 閲覧 */
+.dic-show{
+	padding: 10px 45px;
+	span{
+		margin-left: 55px;
+		font-size: 14px;
+		padding: 0;
+		font-weight: normal;
+	}
+	h1{
+		font-size: 1.5em;
+		font-weight: bold;
+		position: relative;
+		margin-top: 5px;
+		padding: 0 0 10px 55px;
+		line-height: 1.2em;
+		border-bottom: 1px solid #888;
+		text-align: left;
+		&:before, &:after{
+			content: "";
+			position: absolute;
+			bottom: 0;
+			width: 12px;
+			height: 12px;
+			border: 2px solid #35C6C4;
+			margin: auto;
+			background-color: transparent;
+		}
+		&:before{
+			top: -16px;
+			left: 10px;
+		}
+		&:after{
+			top: 2px;
+			left: 16px;
+		}
+	}
+}
+.dic-show div.btn{
+	position: relative;
+	a:after {
+		position: absolute;
+		bottom: .3em;
+		left: 0;
+		content: '';
+		width: 100%;
+		height: 1px;
+		background-color: lighten($char,30%);
+		opacity: 0;
+		transition: .3s;
+	}
+	a:hover:after {
+		bottom: 0;
+		opacity: 1;
+	}
+	.a01{
+		position: absolute;
+		font-size: 16px;
+		right: 0;
+		bottom: -10px;
+		padding-bottom: 3px;
+	}
+	.a02{
+		position: absolute;
+		font-size: 16px;
+		right: 80px;
+		bottom: -10px;
+		padding-bottom: 3px;
+	}
+}
+.dic-show .mean{
+	display: block;
+	font-size:16px;
+	margin: 50px 0;
+	padding: 20px;
+	font-size: 16px;
+	word-wrap: break-word;
+	p {
+		margin-top: 1.5em;
+		line-height: 1.5em;
+		&:first-child{
+			margin-top: 0;
+		}
+
+	}
+	a {
+		color: $hi-navy;
+		position: relative;
+		display: inline-block;
+		transition: .3s;
+		font-weight: bold;
+		&:after {
+			position: absolute;
+			bottom: .3em;
+			left: 0;
+			content: '';
+			width: 100%;
+			height: 1px;
+			background-color: $navy;
+			opacity: 0;
+			transition: .3s;
+		}
+		&:hover:after {
+			bottom: 0;
+			opacity: 1;
+		}
+	}
+}
+
+/* レスポンシブ */
+@media screen and (max-width:830px) {
+	.dic-new .title input, .dic-new .yomi input ,.dic-new .mean textarea{
+		border: solid 1px #ccc;
+		border-radius: 4px;
+	}
+	.dic-new .mean textarea{
+		height: 190px;
+	}
+	.dic-search{
+		padding: 10px 10px 60px;
+		input{
+			width: 285px;
+			border: solid 1px #ccc;
+			border-radius: 4px;
+			margin: 0;
+		}
+
+	}
+	/* 登録・編集 */
+	.dic-newWord form, .dic-edit form{
+		padding: 15px 0;
+	}
+	.dic-list{
+		position: relative;
+		.entry{
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	}
+	.dic-tables{
+		padding: 15px 5px;
+		margin: 0;
+	}
+	.dic-tables ul li{
+		margin-bottom: 20px;
+		a{
+			font-size: 1.2em;
+			padding: 0 45px 5px;
+		}
+		&:last-child{
+			margin-bottom: 0px;
+		}
+	}
+	.dic-show {
+		padding: 0;
+		span{
+			font-size: 14px;
+			margin-left: 45px;
+		}
+		h1{
+			font-size: 1.2em;
+			padding: 0 0 5px 45px;
+			&:before{
+				display: block;
+			}
+		}
+	}
+	.dic-show .mean{
+		margin: 30px 0 20px;
+	}
+}

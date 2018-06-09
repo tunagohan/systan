@@ -1,0 +1,36 @@
+<%= form_with(model: word, local: true) do |form| %>
+  <% if word.errors.any? %>
+    <div id="error_explanation">
+      <h2>正常に登録ができませんでした。<br>以下をご確認ください。</h2>
+
+      <ul>
+      <% word.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!-- _form new word registration -->
+<div class="dic-new">
+	<div class="title">
+		<%= form.label :title %>
+		<%= form.text_field :title, id: :word_title %>
+	</div>
+
+	<div class="yomi">
+		<%= form.label :yomi %>
+		<%= form.text_field :yomi, id: :word_yomi , :placeholder => "カタカナで入力してください" %>
+	</div>
+
+	<div class="mean">
+		<%= form.label :body %>
+		<%= form.text_area :body, id: :word_body %>
+	</div>
+
+	<div class="actions">
+		<%= form.submit %>
+	</div>
+</div>
+<!-- _from new word registration -->
+<% end %>

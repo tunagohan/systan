@@ -1,0 +1,154 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  font-url('icomoon.eot?na3dz8');
+  src:  font-url('icomoon.eot?na3dz8#iefix') format('embedded-opentype'),
+    font-url('icomoon.ttf?na3dz8') format('truetype'),
+    font-url('icomoon.woff?na3dz8') format('woff'),
+    font-url('icomoon.svg?na3dz8#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+  content: "\e900";
+}
+.icon-pencil:before {
+  content: "\e905";
+  padding-right: 5px;
+  color: #0ba;
+  font-family: 'icomoon' !important;
+}
+.icon-books:before {
+  content: "\e920";
+  color: #93ce57;
+  padding-right: 10px;
+  font-family: 'icomoon' !important;
+}
+.icon-stack:before {
+  content: "\e92e";
+}
+.icon-folder-plus:before {
+  content: "\e931";
+  color: #fba027;
+  padding-right: 10px;
+  font-family: 'icomoon' !important;
+}
+.icon-user:before {
+  content: "\e971";
+}
+.icon-user-plus:before {
+  content: "\e973";
+}
+.icon-user-minus:before {
+  content: "\e974";
+  padding-right: 10px;
+  font-family: 'icomoon' !important;
+}
+.icon-spinner:before {
+  content: "\e97a";
+}
+.icon-search:before {
+	content: "\e986";
+	color: #0ba;
+	font-size: 25px;
+	position: absolute;
+	top: 10px;
+	right: 465px;
+	font-family: 'icomoon' !important;
+}
+.icon-cogs:before {
+  content: "\e995";
+}
+.icon-bin:before {
+  content: "\e9ac";
+  padding-right: 5px;
+  color: #0ba;
+  font-family: 'icomoon' !important;
+}
+.icon-download3:before {
+  content: "\e9c7";
+}
+.icon-upload3:before {
+  content: "\e9c8";
+}
+.icon-smile:before {
+  content: "\e9e1";
+}
+.icon-hipster:before {
+  content: "\e9f9";
+  padding-right: 10px;
+  font-family: 'icomoon' !important;
+  color: #2d9ee0;
+}
+.icon-question:before {
+  content: "\ea09";
+}
+.icon-info:before {
+  content: "\ea0c";
+}
+.icon-checkmark:before {
+  content: "\ea10";
+  font-size: 0.8em;
+  padding-right: 25px;
+  padding-left: 10px;
+  color: #0ba;
+  position: absolute;
+  left: 0px;
+  bottom: 5px;
+  font-family: 'icomoon' !important;
+}
+.icon-checkmark2:before {
+  content: "\ea11";
+  font-size: 0.8em;
+  padding-right: 10px;
+  font-family: 'icomoon' !important;
+}
+.icon-enter:before {
+  content: "\ea13";
+  padding-right: 5px;
+  font-family: 'icomoon' !important;
+}
+.icon-exit:before {
+  content: "\ea14";
+  padding-right: 10px;
+  font-family: 'icomoon' !important;
+}
+@media screen and (max-width:830px) {
+	.icon-folder-plus:before {
+		font-size: 28px;
+		position: absolute;
+		top: -33px;
+		left: -4px;
+		color: #c69;
+	}
+	.icon-hipster:before {
+		font-size: 26px;
+		position: absolute;
+		top: -31px;
+		left: 2px;
+	}
+	.icon-search:before {
+		top: 20px;
+		right: 310px;
+	}
+	.icon-exit:before {
+		font-size: 25px;
+		position: absolute;
+		top: -30px;
+		right: 0px;
+	}
+}

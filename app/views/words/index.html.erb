@@ -1,0 +1,33 @@
+ <!-- common-messege -->
+ <div class="common-messege">
+	 <p><%= notice %></p>
+ </div>
+ <!-- //common-messege -->
+ <!-- dic-search -->
+ 	<div class="dic-search">
+ 		<%= search_form_for @search, html: { id: "icon", class:"icon-search" } do |f| %>
+ 			<%= f.search_field :title_or_yomi_cont  , :placeholder => "検索 (単語名もしくはヨミ)"%>
+ 		<% end %>
+ 	</div>
+  <!-- //dic-search -->
+
+
+<% if @count == @allcount  %>
+<h1><span>単語一覧</span></h1>
+<% else %>
+<h1><span>検索結果</span></h1>
+<% end %>
+<!-- dic-tables -->
+<div class="dic-tables">
+	<ul>
+		<% @products.each do |word| %>
+		<li>
+			<%= link_to word , class: "icon-checkmark" do %>
+			<span class="span01"><%= word.yomi %></span>
+			<%= word.title %>
+			<% end %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<!-- //dic-tables -->

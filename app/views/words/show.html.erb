@@ -1,0 +1,29 @@
+<!-- common-messege -->
+<div class="common-messege">
+	<p><%= notice %></p>
+</div>
+<!-- //common-messege -->
+
+<!-- dic-show -->
+<% if @word.nil? == false %>
+	<div class="dic-show">
+		<span><%= @word.yomi %></span>
+		<h1>
+			<%= @word.title %>
+		</h1>
+		<div class="btn">
+			<!-- 削除ボタン -->
+			<% if @word.user_id.to_i == current_user.id.to_i %>
+
+			<%= link_to '削除', @word, { method: :delete, :class => "icon-bin a02", data: { :confirm => '本当に削除しますか?'} } %>
+			<% end %>
+			<!-- 削除ボタン -->
+
+			<%= link_to '編集', edit_word_path(@word), { :class => "icon-pencil a01" }%>
+		</div>
+		<div class="mean">
+		  <%= add_word_link(simple_format(h(@word.body))).html_safe %>
+		</div>
+	</div>
+<% end %>
+<!-- //dic-show -->

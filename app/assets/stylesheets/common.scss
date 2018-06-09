@@ -1,0 +1,569 @@
+@charset "utf-8";
+/* 共通カラー */
+$char :#2c2d30;
+$unactive :#999;
+$navy : #036;
+$hi-navy :lighten($navy,15%);
+$font :"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", verdana, arial, helvetica, sans-serif;
+/*=======================
+reset
+=======================*/
+html,body{
+margin:0;
+padding:0;
+font-family:$font;
+background: #FcFcFc;
+color: $char;
+font-size: 18px;
+line-height: 22px;
+display: flex;
+flex-direction: column;
+}
+div,dl,dt,dd,ul,ol,li,p{
+display:block;
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+input,button,select,textarea{
+font-family:$font;
+-moz-box-sizing:border-box;
+-webkit-box-sizing:border-box;
+box-sizing:border-box;
+-moz-appearance:none;
+-webkit-appearance:none;
+appearance:none;
+margin:0;
+-webkit-box-shadow:none;
+box-shadow:none;
+outline:none;
+}
+input[type="text"],input[type="tel"],input[type="email"],input[type="password"],input[type="search"],select,textarea{
+width:100%;
+border:none;
+background:transparent;
+border-radius:3px;
+}
+input[type="password"]{
+font-family:$font;
+}
+input[type="search"]::-webkit-search-decoration,input[type="search"]::-webkit-search-cancel-button{display:none;-webkit-appearance:none;}
+textarea{min-height:5em;resize:vertical;}
+button,input[type="button"],input[type="submit"]{
+font-weight:bold;
+padding:0;
+}
+input[type="checkbox"]{
+-moz-appearance:checkbox;
+-webkit-appearance:checkbox;
+appearance:checkbox;
+margin:0;
+}
+
+
+h1{
+	font-size: 1.5em;
+	font-weight: normal;
+	position: relative;
+	span {
+		position: relative;
+		display: inline-block;
+		padding: 0 50px;
+		background-color: #FcFcFc;
+		text-align: left;
+	}
+
+}
+a{
+	font-family:$font;
+	color: $char;
+	text-decoration: none;
+	&:visited {
+		color: $char;
+	}
+}
+
+
+/* パーツ */
+@mixin btn{
+	border: solid 2px $navy;
+	border-radius: 4px;
+	padding: 10px 25px;
+	text-decoration: none;
+	text-align: center;
+	background-color: $navy;
+	color: #fff;
+	font-size: .7em;
+	&:hover{
+		background-color: $hi-navy;
+		border: solid 2px $hi-navy;
+		color: #fff;
+		transition: background-color .2s ease 0s, color .2s ease 0s;
+	}
+}
+
+@mixin textarea {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	margin-top: 5px;
+	border-radius: 4px;
+	border: solid 1px #e0e0e0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+}
+
+/* animation */
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  animation-name: pulse;
+}
+
+@keyframes jump {
+0% { transform: translateY(0); }
+100% { transform: translateY(-10px); }
+}
+
+@keyframes hinge {
+  0% {
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+
+  20%, 60% {
+    transform: rotate3d(0, 0, 1, 80deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+
+  40%, 80% {
+    transform: rotate3d(0, 0, 1, 60deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+    opacity: 1;
+  }
+
+  to {
+    transform: translate3d(0, 700px, 0);
+    opacity: 0;
+  }
+}
+.animated.hinge {
+  animation-duration: 2s;
+}
+
+/* wrapper */
+.wrapper {
+  min-height: 90vh;
+}
+
+/* header */
+header{
+	background: #fff;
+	height: 120px;
+	box-shadow: 0 1px 4px rgba(#000,.15);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	&:before{
+		position: absolute;
+		z-index: 10;
+		content: '';
+		display: block;
+		width: 100%;
+		height: 1px;
+		bottom: -10px;
+		left: 0;
+		border-top: 7px solid $navy;
+		border-bottom: 2px dashed $navy;
+		padding-bottom: 3px;
+	}
+}
+.common-globalHeader{
+	padding: 0 10px;
+	width: 100%;
+	.header-title {
+		font-size: 12px;
+		margin: 18px 70px 10px;
+		vertical-align: top;
+		letter-spacing: 0.09em;
+		width: 670px;
+		line-height: 1.4;
+	}
+	.header-log {
+		height: 66px;
+		img.img01{
+			width: 121px;
+			height: 66px;
+			left: 80px;
+			position: absolute;
+			margin: auto;
+			transform-origin: 50% 100%;
+			&:hover{
+			 animation-name: pulse;
+			}
+		}
+	}
+	.btn{
+		display: none;
+	}
+}
+
+
+/* main */
+#main{
+	margin: 0 auto;
+	padding-top: 130px;
+}
+
+
+/* ログアウト時 */
+.common-subLayout{
+	h2{
+		text-align: center;
+		margin:10px 0 60px;
+	}
+	.field{
+		margin: 25px 0;
+		label{
+			font-weight: bold;
+		}
+		input{
+			@include textarea;
+			&[type="checkbox"]{
+				width: auto;
+			}
+		}
+	}
+	.actions input{
+		@include btn;
+		width: 100%;
+		font-size: 16px;
+	}
+	.common-login, .common-forgotPass, .common-retransmission, .common-changePass{
+		width: 450px;
+		margin: 60px auto 40px;
+	}
+	.common-signUp{
+		width: 450px;
+		margin: 60px auto 40px;
+		.attention{
+			margin-top: 10px;
+			font-size: 16px;
+		}
+	}
+	.common-link{
+		margin-top: 25px;
+		p{
+			color: $unactive;
+			padding: 5px;
+			font-size: 16px;
+			a{
+				color: $unactive;
+				font-size: 16px;
+				position: relative;
+				display: inline-block;
+				transition: .3s;
+				&:after {
+					position: absolute;
+					bottom: .3em;
+					left: 0;
+					content: '';
+					width: 100%;
+					height: 1px;
+					background-color: $unactive;
+					opacity: 0;
+					transition: .3s;
+				}
+				&:hover:after {
+					bottom: 0;
+					opacity: 1;
+				}
+			}
+		}
+		.sign-up{
+			a{
+				color: $hi-navy;
+				&:after {
+					background-color: $hi-navy;
+				}
+			}
+		}
+	}
+}
+.common-subLayout .common-login .field label:last-child{
+	font-size: 14px;
+}
+
+
+/* 左の欄 */
+.common-someting{
+	position:fixed;
+	margin: 50px 0 0 80px;
+}
+.common-top{
+	p{
+		font-size: 16px;
+		margin: 15px 0 50px;
+	}
+	div{
+		margin: 20px 0;
+		position: relative;
+		a:after {
+			position: absolute;
+			bottom: .3em;
+			left: 0;
+			content: '';
+			width: 60%;
+			height: 1px;
+			background-color: $unactive;
+			opacity: 0;
+			transition: .3s;
+		}
+		a:hover:after {
+			bottom: 0;
+			opacity: 1;
+		}
+	}
+	div.pt02{
+		a:after {
+			width: 70%;
+		}
+	}
+}
+.common-bottom{
+	padding-top: 70px;
+	div{
+		margin: 20px 0;
+		width: 120%;
+		color: $unactive;
+		a{
+			font-size: 16px;
+			color: $unactive;
+			&:visited{
+				color: $unactive;
+			}
+		}
+	}
+}
+
+
+.common-mainLayout{
+	margin: 40px 80px 0 230px;
+	padding: 15px 0;
+}
+
+
+.common-messege{
+	p{
+		color: green;
+		padding: 10px 45px;
+	}
+}
+
+
+/* footer */
+footer{
+	text-align: center;
+	font-size: 10px;
+}
+
+
+
+// k-waragai css code
+.top-page{
+	width: 450px;
+	margin: 60px auto 40px;
+}
+.square_btn {
+/* 	display: inline-block; */
+	display: block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	border-radius: 3px;
+	transition: .2s;
+/* 	width: 100%; */
+ 	text-align: center;
+	padding: 10px;
+	margin: 5px 0 5px 0;
+}
+
+#login {
+	color: #67c5ff;
+/* 	border: solid 2px #67c5ff;
+ */
+}#login:hover {
+/* 	background: #67c5ff;
+color: white; */
+	color: lighten(#67c5ff,10%);
+}
+
+#register {
+/* 	color: #f9b266; */
+/* border: solid 2px #f9b266; */
+	color: #ff9524;
+	border: solid 2px #ff9524;
+	width: 250px;
+    margin: 0 auto;
+}#register:hover {
+/* 	background: #f9b266; */
+	background: #ff9524;
+	color: white;
+}
+
+.introductory{
+/* 	border: double 5px #4ec4d3;
+width: 100%;
+padding: 5px;
+margin: 5px 0 5px 0;
+ */
+	margin: 50px 0;
+	text-align: center;
+	h1{
+		margin-bottom: 30px;
+		font-weight: bold;
+		font-size: 2em;
+		text-align: center;
+	}
+	p{
+		margin: 5px;
+	}
+}
+
+.common-subLayout img{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+}
+
+.button-block p{
+	margin: 10px;
+	text-align: center;
+}
+
+
+
+/* レスポンシブ */
+@media screen and (max-width:830px) {
+	.wrapper{
+		margin-top: 0px;
+	}
+	#main{
+		padding-top: 75px;
+	}
+	h1{
+		text-align: left;
+		&:before {
+			display: none;
+		}
+		span{
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	body{
+		margin: 0;
+	}
+	.common-someting {
+		display: none;
+	}
+	header{
+		position: fixed;
+		height: 65px;
+		z-index: 100;
+	}
+	.common-globalHeader{
+		.header-title {
+			display: none;
+		}
+		.header-log {
+			width: 81px;
+			height: 44px;
+			 img.img01{
+				width: 81px;
+				height: 44px;
+				top: 0;
+				bottom: 0;
+				left: 35px;
+				position: absolute;
+				margin: auto;
+				&:hover{
+					-webkit-animation: none;
+					animation: none;
+				}
+			}
+		}
+		.btn{
+			display: block;
+			position: relative;
+			margin-right:30px;
+			.pt01{
+				position: absolute;
+				right: 130px;
+				font-size: 10px;
+				top: 4px;
+			}
+			.pt02{
+				position: absolute;
+				right: 70px;
+				font-size: 10px;
+				top: 4px;
+			}
+			.pt03{
+				color: $unactive;
+				position: absolute;
+				right: -10px;
+				font-size: 10px;
+				top: 4px;
+			}
+		}
+	}
+	.common-globalHeader img.img02{
+		display: none;
+	}
+	.common-mainLayout{
+		margin: 10px auto 0;
+		width: 90%;
+		padding: 0;
+	}
+	.common-subLayout{
+		.common-login, .common-forgotPass, .common-retransmission, .common-changePass, .common-signUp{
+			width: 345px;
+			margin: 40px auto;
+		}
+		h2{
+			text-align: center;
+			margin-bottom: 30px;
+		}
+	}
+	.top-page{
+		width: 345px;
+		margin: 30px auto 40px;
+	}
+}
+
