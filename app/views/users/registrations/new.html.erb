@@ -1,0 +1,39 @@
+<!-- common-signUp -->
+<div class="common-signUp">
+<h2>アカウントの作成</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :username %>
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email , :placeholder => "@dip-net.co.jpのみ登録できます"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off" , :placeholder => "6文字以上で入力してください"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+  <div class="attention">
+  	<p>※ 登録ボタンを押すと入力されたメールアドレス宛に確認メールが届きます。</p>
+  </div>
+<% end %>
+<%= render "users/shared/links" %>
+</div>
+<!-- //common-signUp -->

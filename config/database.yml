@@ -1,24 +1,29 @@
-# PostgreSQL. Versions 9.1 and up are supported.
 default: &default
-  adapter: postgresql
+  adapter: mysql2
   encoding: utf8
-  host: db
   pool: 5
 
 development:
   <<: *default
-  database: systan_development
-  username: <%= ENV['SYSTAN_DATABASE_USERNAME'] %>
-  password: <%= ENV['SYSTAN_DATABASE_PASSWORD'] %>
+  database: systan_dev
+  username: root
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  socket: /tmp/mysql.sock
 
 test:
   <<: *default
   database: systan_test
-  username: <%= ENV['SYSTAN_DATABASE_USERNAME'] %>
-  password: <%= ENV['SYSTAN_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  socket: /tmp/mysql.sock
 
 production:
   <<: *default
-  database: <%= ENV['SYSTAN_DATABASE'] %>
-  username: <%= ENV['SYSTAN_DATABASE_USERNAME'] %>
-  password: <%= ENV['SYSTAN_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  socket: <%= ENV['DB_SOCKET'] %>

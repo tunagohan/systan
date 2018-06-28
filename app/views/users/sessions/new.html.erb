@@ -1,0 +1,31 @@
+<!-- common-login -->
+<div class="common-login">
+<h2>ログイン</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :login %>
+    <%= f.text_field :login, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+		<label>
+			<%= f.check_box :remember_me %>
+			次回から自動的にログイン
+		</label>
+ 	</div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "ログイン" %>
+  </div>
+<% end %>
+<%= render "users/shared/links" %>
+</div>
+<!-- //common-login -->
