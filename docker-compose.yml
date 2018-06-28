@@ -1,18 +1,39 @@
 version: '3'
 services:
-# MySQL
-  db:
+  app:
     build:
-      context: .
-      dockerfile: ./docker/mysql/Dockerfile
+      context: ./
+    command: bundle exec puma -e ${RAILS_ENV} -C config/puma.rb
+    env_file: .env
     volumes:
-      - db-data:/var/lib/mysql
+      - .:/myapp
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
+      - log-data:/myapp/log
+    depends_on:
+      - db
+  db:
+    restart: always
+    image: postgres
+    volumes:
+      - sql-data:/var/lib/postgresql/data
+    env_file: .env
     environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      - POSTGRES_USER=${SYSTAN_DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${SYSTAN_DATABASE_PASSWORD}
+  web:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
     ports:
-      - "${DB_PORT}:3306"
+      - 80:80
+    depends_on:
+      - app
 volumes:
-  db-data:
+  sql-data:
+  bundle:
+  public-data:
+  tmp-data:
+  log-data:

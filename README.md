@@ -1,64 +1,65 @@
 # README
 
-## env 作成
+## 17sys_tan(しすたん)
 
-.envファイルの作成が必須です。
-direnvでも可能です。
+- [x] 環境開発完了
+- [ ] トップページ
+- [x] ログイン・ログアウト・新規登録
+- [x] セッション保持関連の確認
+- [x] ワードの表示
+- [x] ワードの検索
+- [x] ワードの登録
+- [x] ワードの編集
+- [ ] 全体確認
 
-以下は例になります。
-DB_HOSTは `127.0.0.1固定` です
+### モジュール
+
+* [common-] 共通機能
+* [dic-] 辞書機能
+* [my-] 個別機能
+
+
+## 導入手順
+
+### クローンする
 
 ```
-MYSQL_DATABASE=systan
-MYSQL_USER=systan
-MYSQL_PASSWORD=systan
-MYSQL_ROOT_PASSWORD=systan
-WEB_PORT=3000
-DB_PORT=3456
-DB_HOST=127.0.0.1
+$ https://github.dip-net.co.jp/k-waragai/17sys_tan.git
 ```
 
-## 構成紹介
+### .envを作成する
 
-フルDockerではRailsのレスポンスがとても重く
-使い勝手が非常に悪かったため、ミドルウェアのみをDocker化し
-Rubyはローカルのもを使用する形に変更しました。
+```
+$ cp .env.example .env
+```
 
-| Name | Version |
-|:--:|:--:|
-| MySQL | 5.7.21 |
-| Ruby | 2.5.1 |
-| Rails | 5.2.0 |
+### .envを編集する
 
-
-## 初めかた
-
-※ローカルにrubyの2.5.1が入っているか `ruby -v` で確認後進めてください
-
-### おもむろに以下のコマンドを叩いてください
+### 立ち上げる
 
 ```
 $ docker-compose up -d
 ```
 
-### bundle installしておく
+### bundle install
 
 ```
-$ bundle install --path=vendor/bundle
+$ docker-compose run --rm app bundle install
 ```
 
-### dbをcreateしmigrateする
+### db作成をする
 
 ```
-$ bundle exec rake db:create db:migrate
+$ docker-compose run --rm app bundle exec rake db:create
+$ docker-compose run --rm app bundle exec rake db:migrate
 ```
 
-### serverを立ち上げる
-
-PORT番号はenvで指定した番号と同じにしてください。
-direnvが入っていれば以下のようなコマンドでも平気です
-
+### コンパイルする(のちに自動化)
 
 ```
-$ bundle exec rails s -b 0.0.0.0 -p $WEB_PORT
+$ docker-compose run --rm app bundle exec rake assets:precompile
 ```
+
+### 表示する
+
+http://localhost
